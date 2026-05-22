@@ -2,7 +2,7 @@
 
 <p align="center">
   <strong>Turn messy ideas into agent-ready prompts.</strong><br>
-  A small skill for Claude Code, Cursor, and Claude — built on Anthropic’s prompt-engineering principles.
+  A small skill for Claude Code, Cursor, built on Anthropic’s prompt-engineering principles.
 </p>
 
 <p align="center">
