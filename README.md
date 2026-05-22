@@ -1,124 +1,149 @@
 # Scratch to Prompt
 
-**Tagline:** Turn messy ideas into agent-ready prompts.
+<p align="center">
+  <strong>Turn messy ideas into agent-ready prompts.</strong><br>
+  A small skill for Claude Code, Cursor, and Claude — built on Anthropic’s prompt-engineering principles.
+</p>
 
-| Platform | Invoke | Install |
-|----------|--------|---------|
-| **Claude Code** | `/scratch <idea>` | `./install.sh` |
-| **Cursor** | `@scratch` or mention *scratch to prompt* | `./install-cursor.sh` |
-| **Claude.ai** | Upload skill zip | See below |
+<p align="center">
+  <a href="https://github.com/AJSubrizi/scratch-to-prompt/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
+  <a href="https://github.com/anthropics/prompt-eng-interactive-tutorial"><img src="https://img.shields.io/badge/based%20on-Anthropic%20Tutorial-orange" alt="Based on Anthropic Tutorial"></a>
+</p>
 
-Principles from [Anthropic's Interactive Prompt Engineering Tutorial](https://github.com/anthropics/prompt-eng-interactive-tutorial) — operational checklist, not a notebook copy.
+---
 
-## Quick start
+You scribble a half-formed idea. **Scratch to Prompt** turns it into a structured, copy-paste-ready prompt — with context, constraints, deliverables, and a quality bar — so Claude, Codex, or Cursor can actually execute it.
+
+Inspired by [Anthropic’s Interactive Prompt Engineering Tutorial](https://github.com/anthropics/prompt-eng-interactive-tutorial). This repo is the **checklist and workflow**, not a copy of the notebooks.
+
+## ✨ What you get
+
+Every run returns:
+
+1. **Refined understanding** — what you’re really trying to build  
+2. **Recommended prompt** — ready to paste into your agent  
+3. **Optional improvements** — 3–7 concrete ways to make it stronger  
+
+The skill applies prompt-engineering basics internally: clarity, roles, separated context, output format, step-by-step when useful, few-shot when needed, and anti-hallucination guardrails.
+
+## 🚀 Quick install
 
 ```bash
-git clone https://github.com/YOUR_USER/scratch-to-prompt.git
+git clone https://github.com/AJSubrizi/scratch-to-prompt.git
 cd scratch-to-prompt
-./install-all.sh   # Claude Code + Cursor user + project copy
+./install-all.sh
 ```
 
-Or pick one:
+| Platform | How to invoke | Install only |
+|----------|---------------|--------------|
+| **Claude Code** | `/scratch <your idea>` | `./install.sh` |
+| **Cursor** | `@scratch` or ask for *scratch to prompt* | `./install-cursor.sh` |
+| **Claude.ai** | Upload `skills/scratch/` as a zip | See [Claude.ai](#claudeai) |
 
-```bash
-./install.sh          # ~/.claude/skills/scratch
-./install-cursor.sh   # ~/.cursor/skills/scratch
-```
+Restart the app after installing, then try one of the [examples](#-examples) below.
 
-## Claude Code
+## 💬 Examples
 
-```bash
-./install.sh
-```
-
-Restart Claude Code:
+**Claude Code**
 
 ```text
 /scratch voglio creare una web app dove incolli un URL e ti genera un mega prompt per ricreare il sito
 ```
 
-## Cursor
-
-**User skill (all projects):**
-
-```bash
-./install-cursor.sh
-```
-
-Restart Cursor or open a new Agent chat, then:
+**Cursor**
 
 ```text
 @scratch app per rappresentanti che trova clienti sulla mappa
 ```
 
-Or write: *usa scratch to prompt per…*
+**English, coding agent**
 
-**Project skill (this repo only):** `.cursor/skills/scratch/` is included in the clone. After editing `skills/scratch/`, run:
+```text
+@scratch paste a URL and generate a phased prompt to rebuild the site with proper component inventory and verification steps
+```
+
+## 📖 Platform guides
+
+<details>
+<summary><strong>Claude Code</strong></summary>
+
+```bash
+./install.sh
+```
+
+Installs to `~/.claude/skills/scratch`. Restart Claude Code, then use `/scratch` followed by your idea.
+
+</details>
+
+<details>
+<summary><strong>Cursor</strong></summary>
+
+**All projects (recommended)**
+
+```bash
+./install-cursor.sh
+```
+
+Installs to `~/.cursor/skills/scratch`. Use `@scratch` in Agent chat.
+
+**This repo only**
+
+The folder `.cursor/skills/scratch/` is included when you clone. After editing the canonical skill, sync:
 
 ```bash
 ./scripts/sync-project-skill.sh
 ```
 
-## Claude.ai (project skill)
+</details>
 
-1. Zip the `skills/scratch/` folder (`SKILL.md` must be inside the zip).
-2. Upload in project skill settings.
-3. Invoke by description or name; slash syntax may differ from Claude Code.
+<details>
+<summary><strong>Claude.ai</strong></summary>
 
-## Repository layout
+1. Zip the contents of `skills/scratch/` (must include `SKILL.md`).
+2. Upload as a project skill in Claude settings.
+3. Invoke by name or when your request matches the skill description.
+
+</details>
+
+## 🗂️ Repository layout
 
 ```text
 scratch-to-prompt/
-├── LICENSE
-├── README.md
-├── install.sh              # Claude Code → ~/.claude/skills/scratch
-├── install-cursor.sh       # Cursor → ~/.cursor/skills/scratch
-├── install-all.sh          # All targets
-├── scripts/
-│   └── sync-project-skill.sh
-├── skills/scratch/         # canonical source (edit here)
+├── skills/scratch/              ← edit here (source of truth)
 │   ├── SKILL.md
 │   ├── examples.md
 │   └── references/
 │       └── anthropic-checklist.md
-└── .cursor/skills/scratch/ # project skill (synced from skills/scratch)
+├── .cursor/skills/scratch/      ← project skill (synced)
+├── install.sh                   → ~/.claude/skills/scratch
+├── install-cursor.sh            → ~/.cursor/skills/scratch
+├── install-all.sh
+└── scripts/sync-project-skill.sh
 ```
-
-## Naming
 
 | Item | Value |
 |------|--------|
-| GitHub repo | `scratch-to-prompt` |
-| Skill folder | `scratch` |
-| Skill id (`name`) | `scratch-to-prompt` |
-| Public name | Scratch to Prompt |
+| Command / mention | `/scratch` · `@scratch` |
+| Skill id | `scratch-to-prompt` |
+| Folder name | `scratch` |
 
-## Push to GitHub
+## 🛠 Contributing
 
-```bash
-cd scratch-to-prompt
-git init
-git add .
-git commit -m "Initial release: Scratch to Prompt skill for Claude Code and Cursor"
-git branch -M main
-git remote add origin git@github.com:YOUR_USER/scratch-to-prompt.git
-git push -u origin main
-```
+1. Change files under **`skills/scratch/`** only.  
+2. Run `./scripts/sync-project-skill.sh`.  
+3. Re-run `./install.sh` and/or `./install-cursor.sh` to refresh local installs.  
+4. Open a PR.
 
-Replace `YOUR_USER` with your GitHub username after creating the empty repo.
-
-## Uninstall
+## 🧹 Uninstall
 
 ```bash
 rm -rf ~/.claude/skills/scratch ~/.cursor/skills/scratch
 ```
 
-## Contributing
+## 📄 License
 
-Edit files under `skills/scratch/` only, then:
+[MIT](LICENSE) — use freely, attribution appreciated.
 
-```bash
-./scripts/sync-project-skill.sh
-```
-
-Re-run `./install.sh` and/or `./install-cursor.sh` to refresh local installs.
+<p align="center">
+  <sub>Built with ☕ for people who think in scratch notes and ship in prompts.</sub>
+</p>
