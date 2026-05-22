@@ -2,7 +2,7 @@
 
 <p align="center">
   <strong>Turn messy ideas into agent-ready prompts.</strong><br>
-  A small skill for Claude Code, Cursor, and Claude — built on Anthropic’s prompt-engineering principles.
+  A small skill for Claude Code, Cursor, and Claude  built on Anthropic’s prompt-engineering principles.
 </p>
 
 <p align="center">
@@ -12,7 +12,7 @@
 
 ---
 
-You scribble a half-formed idea. **Scratch to Prompt** turns it into a structured, copy-paste-ready prompt — with context, constraints, deliverables, and a quality bar — so Claude, Codex, or Cursor can actually execute it.
+You scribble a half formed idea. **Scratch to Prompt** turns it into a structured, copy paste ready prompt  with context, constraints, deliverables, and a quality bar  so Claude, Codex, or Cursor can actually execute it.
 
 Inspired by [Anthropic’s Interactive Prompt Engineering Tutorial](https://github.com/anthropics/prompt-eng-interactive-tutorial). This repo is the **checklist and workflow**, not a copy of the notebooks.
 
@@ -20,11 +20,11 @@ Inspired by [Anthropic’s Interactive Prompt Engineering Tutorial](https://gith
 
 Every run returns:
 
-1. **Refined understanding** — what you’re really trying to build  
-2. **Recommended prompt** — ready to paste into your agent  
-3. **Optional improvements** — 3–7 concrete ways to make it stronger  
+1. **Refined understanding** what you’re really trying to build  
+2. **Recommended prompt**  ready to paste into your agent  
+3. **Optional improvements** 3–7 concrete ways to make it stronger  
 
-The skill applies prompt-engineering basics internally: clarity, roles, separated context, output format, step-by-step when useful, few-shot when needed, and anti-hallucination guardrails.
+The skill applies prompt engineering basics internally: clarity, roles, separated context, output format, step by step when useful, few shot when needed, and anti hallucination guardrails.
 
 ## 🚀 Quick install
 
