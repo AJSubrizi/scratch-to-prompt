@@ -51,7 +51,7 @@ npx skills add AJSubrizi/scratch-to-prompt --list
 Rough input:
 
 ```text
-/scratch voglio creare una web app dove incolli un URL e ti genera un mega prompt per ricreare il sito
+/scratch I want to build a web app where you paste a URL and it generates a detailed prompt to recreate the site
 ```
 
 Scratch to Prompt turns that into:
@@ -67,16 +67,16 @@ The result stays practical: detailed enough for an agent to act on, but still se
 **Claude Code**
 
 ```text
-/scratch voglio creare una web app dove incolli un URL e ti genera un mega prompt per ricreare il sito
+/scratch build a Next.js dashboard for a sales team to track leads, notes, and follow-ups
 ```
 
 **Cursor**
 
 ```text
-@scratch app per rappresentanti che trova clienti sulla mappa
+@scratch app for field sales reps that finds prospects on a map
 ```
 
-**English**
+**Codex / other agents**
 
 ```text
 @scratch paste a URL and generate a phased prompt to rebuild the site with verification steps

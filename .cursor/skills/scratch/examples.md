@@ -1,14 +1,14 @@
 # Scratch to Prompt — examples
 
-## Example 1: One-line product idea (Italian)
+## Example 1: One-line product idea
 
-**Input:** `/scratch app per rappresentanti che trova clienti sulla mappa`
+**Input:** `/scratch app for field sales reps that finds prospects on a map`
 
 **Refined understanding:** Field-sales reps need a map-first web app to discover and log prospects near their route, with offline-friendly notes and quick follow-up actions.
 
 **Recommended prompt (excerpt):** Role = full-stack engineer; MVP = map, geolocation, lead pins, visit status, mobile-responsive UI; stack left as assumption with stated defaults; deliverables = architecture, file tree, implement core screens, test plan.
 
-## Example 2: Coding agent (English)
+## Example 2: Coding agent
 
 **Input:** `/scratch paste a URL and generate a mega prompt to rebuild the site with Claude`
 
