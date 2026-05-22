@@ -2,45 +2,74 @@
 
 <p align="center">
   <strong>Turn messy ideas into agent-ready prompts.</strong><br>
-  A small skill for Claude Code, Cursor, and Claude  built on Anthropic’s prompt-engineering principles.
+  A small skill for Claude Code, Cursor, and Claude — built on Anthropic’s prompt-engineering principles.
 </p>
 
 <p align="center">
   <a href="https://github.com/AJSubrizi/scratch-to-prompt/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
   <a href="https://github.com/anthropics/prompt-eng-interactive-tutorial"><img src="https://img.shields.io/badge/based%20on-Anthropic%20Tutorial-orange" alt="Based on Anthropic Tutorial"></a>
+  <a href="https://skills.sh"><img src="https://img.shields.io/badge/install-npx%20skills-purple" alt="npx skills"></a>
 </p>
 
 ---
 
-You scribble a half formed idea. **Scratch to Prompt** turns it into a structured, copy paste ready prompt  with context, constraints, deliverables, and a quality bar  so Claude, Codex, or Cursor can actually execute it.
+You scribble a half-formed idea. **Scratch to Prompt** turns it into a structured, copy-paste-ready prompt — with context, constraints, deliverables, and a quality bar — so Claude, Codex, or Cursor can actually execute it.
 
-Inspired by [Anthropic’s Interactive Prompt Engineering Tutorial](https://github.com/anthropics/prompt-eng-interactive-tutorial). This repo is the **checklist and workflow**, not a copy of the notebooks.
+Inspired by [Anthropic’s Interactive Prompt Engineering Tutorial](https://github.com/anthropics/prompt-eng-interactive-tutorial). This repo ships the **checklist and workflow**, not the notebooks.
 
 ## ✨ What you get
 
 Every run returns:
 
-1. **Refined understanding** what you’re really trying to build  
-2. **Recommended prompt**  ready to paste into your agent  
-3. **Optional improvements** 3–7 concrete ways to make it stronger  
+1. **Refined understanding** — what you’re really trying to build  
+2. **Recommended prompt** — ready to paste into your agent  
+3. **Optional improvements** — 3–7 concrete ways to make it stronger  
 
-The skill applies prompt engineering basics internally: clarity, roles, separated context, output format, step by step when useful, few shot when needed, and anti hallucination guardrails.
+The skill applies prompt-engineering basics internally: clarity, roles, separated context, output format, step-by-step when useful, few-shot when needed, and anti-hallucination guardrails.
 
-## 🚀 Quick install
+## 🚀 Install (recommended)
+
+Uses the open [skills](https://github.com/vercel-labs/skills) CLI ([skills.sh](https://skills.sh) leaderboard). Installs as skill id **`scratch`** so slash and mentions stay short.
 
 ```bash
-git clone https://github.com/AJSubrizi/scratch-to-prompt.git
-cd scratch-to-prompt
-./install-all.sh
+npx skills add AJSubrizi/scratch-to-prompt -g -y
 ```
 
-| Platform | How to invoke | Install only |
-|----------|---------------|--------------|
-| **Claude Code** | `/scratch <your idea>` | `./install.sh` |
-| **Cursor** | `@scratch` or ask for *scratch to prompt* | `./install-cursor.sh` |
-| **Claude.ai** | Upload `skills/scratch/` as a zip | See [Claude.ai](#claudeai) |
+| Agent | Invoke after install |
+|-------|----------------------|
+| **Claude Code** | `/scratch <your idea>` |
+| **Cursor** | `@scratch` + your idea |
+| **Codex / others** | Attach or mention the **scratch** skill, then describe your idea |
 
-Restart the app after installing, then try one of the [examples](#-examples) below.
+Target one agent only:
+
+```bash
+npx skills add AJSubrizi/scratch-to-prompt -a cursor -g -y
+npx skills add AJSubrizi/scratch-to-prompt -a claude-code -g -y
+```
+
+Preview without installing:
+
+```bash
+npx skills add AJSubrizi/scratch-to-prompt --list
+```
+
+Restart Claude Code or Cursor after the first install.
+
+### Does `/scratch` work with npx?
+
+**Yes** — as long as `SKILL.md` declares `name: scratch` (this repo does). The CLI installs to `~/.agents/skills/scratch` and wires that id to each agent, which maps to **`/scratch`** and **`@scratch`**.
+
+If you installed an older version that used `name: scratch-to-prompt`, remove it and reinstall:
+
+```bash
+rm -rf ~/.agents/skills/scratch-to-prompt
+npx skills add AJSubrizi/scratch-to-prompt -g -y
+```
+
+## 📈 Leaderboard (skills.sh)
+
+No manual signup. Installs via `npx skills add AJSubrizi/scratch-to-prompt` are counted anonymously and ranked on [skills.sh](https://skills.sh) over time. Share the install command to climb the board.
 
 ## 💬 Examples
 
@@ -56,52 +85,35 @@ Restart the app after installing, then try one of the [examples](#-examples) bel
 @scratch app per rappresentanti che trova clienti sulla mappa
 ```
 
-**English, coding agent**
+**English**
 
 ```text
-@scratch paste a URL and generate a phased prompt to rebuild the site with proper component inventory and verification steps
+@scratch paste a URL and generate a phased prompt to rebuild the site with verification steps
 ```
 
-## 📖 Platform guides
+## 🛠 Manual install (optional)
 
-<details>
-<summary><strong>Claude Code</strong></summary>
+If you prefer shell scripts or are hacking on this repo:
 
 ```bash
-./install.sh
+git clone https://github.com/AJSubrizi/scratch-to-prompt.git
+cd scratch-to-prompt
+./install-all.sh    # Claude Code + Cursor + project copy
 ```
 
-Installs to `~/.claude/skills/scratch`. Restart Claude Code, then use `/scratch` followed by your idea.
+| Script | Installs to |
+|--------|-------------|
+| `./install.sh` | `~/.claude/skills/scratch` |
+| `./install-cursor.sh` | `~/.cursor/skills/scratch` |
 
-</details>
+Same commands: **`/scratch`** and **`@scratch`**.
 
 <details>
-<summary><strong>Cursor</strong></summary>
+<summary><strong>Claude.ai (upload zip)</strong></summary>
 
-**All projects (recommended)**
-
-```bash
-./install-cursor.sh
-```
-
-Installs to `~/.cursor/skills/scratch`. Use `@scratch` in Agent chat.
-
-**This repo only**
-
-The folder `.cursor/skills/scratch/` is included when you clone. After editing the canonical skill, sync:
-
-```bash
-./scripts/sync-project-skill.sh
-```
-
-</details>
-
-<details>
-<summary><strong>Claude.ai</strong></summary>
-
-1. Zip the contents of `skills/scratch/` (must include `SKILL.md`).
+1. Zip `skills/scratch/` (must include `SKILL.md`).
 2. Upload as a project skill in Claude settings.
-3. Invoke by name or when your request matches the skill description.
+3. Invoke when your request matches the skill description (slash syntax may differ).
 
 </details>
 
@@ -110,40 +122,38 @@ The folder `.cursor/skills/scratch/` is included when you clone. After editing t
 ```text
 scratch-to-prompt/
 ├── skills/scratch/              ← edit here (source of truth)
-│   ├── SKILL.md
+│   ├── SKILL.md                 ← name: scratch (drives /scratch & npx)
 │   ├── examples.md
 │   └── references/
-│       └── anthropic-checklist.md
-├── .cursor/skills/scratch/      ← project skill (synced)
-├── install.sh                   → ~/.claude/skills/scratch
-├── install-cursor.sh            → ~/.cursor/skills/scratch
-├── install-all.sh
+├── .cursor/skills/scratch/      ← synced project skill
+├── install.sh · install-cursor.sh · install-all.sh
 └── scripts/sync-project-skill.sh
 ```
 
 | Item | Value |
 |------|--------|
-| Command / mention | `/scratch` · `@scratch` |
-| Skill id | `scratch-to-prompt` |
-| Folder name | `scratch` |
+| GitHub | `AJSubrizi/scratch-to-prompt` |
+| npx package | `npx skills add AJSubrizi/scratch-to-prompt` |
+| Skill id | `scratch` |
+| Invoke | `/scratch` · `@scratch` |
 
 ## 🛠 Contributing
 
-1. Change files under **`skills/scratch/`** only.  
-2. Run `./scripts/sync-project-skill.sh`.  
-3. Re-run `./install.sh` and/or `./install-cursor.sh` to refresh local installs.  
-4. Open a PR.
+1. Edit **`skills/scratch/`** only.  
+2. `./scripts/sync-project-skill.sh`  
+3. Open a PR.
 
 ## 🧹 Uninstall
 
 ```bash
-rm -rf ~/.claude/skills/scratch ~/.cursor/skills/scratch
+npx skills remove scratch 2>/dev/null || true
+rm -rf ~/.agents/skills/scratch ~/.claude/skills/scratch ~/.cursor/skills/scratch
 ```
 
 ## 📄 License
 
-[MIT](LICENSE) — use freely, attribution appreciated.
+[MIT](LICENSE)
 
 <p align="center">
-  <sub>Built with ☕ for people who think in scratch notes and ship in prompts.</sub>
+  <sub>Built for people who think in scratch notes and ship in prompts.</sub>
 </p>

@@ -1,5 +1,5 @@
 ---
-name: scratch-to-prompt
+name: scratch
 description: >-
   Turns rough ideas, messy notes, or incomplete project concepts into clear,
   structured, production-ready prompts for Claude, Claude Code, Codex, Cursor,
