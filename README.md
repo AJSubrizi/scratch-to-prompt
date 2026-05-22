@@ -32,7 +32,7 @@ The skill applies prompt-engineering basics internally: clarity, roles, separate
 Uses the open [skills](https://github.com/vercel-labs/skills) CLI ([skills.sh](https://skills.sh) leaderboard). Installs as skill id **`scratch`** so slash and mentions stay short.
 
 ```bash
-npx skills add AJSubrizi/scratch-to-prompt -g -y
+npx skills add AJSubrizi/scratch-to-prompt
 ```
 
 | Agent | Invoke after install |
